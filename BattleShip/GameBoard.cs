@@ -74,5 +74,30 @@ namespace BattleShip
         }
     }
 
+    public abstract class Ship
+    {
+        public string name { get; set; }
+        public int width { get; set; }
+        public int hits { get; set; }
+        public Occupation occupation { get; set; }
+        public bool isSunk
+        {
+            get
+            {
+                return hits >= width;
+            }
+        }
+    }
+
+    public class Destroyer : Ship
+    {
+        public Destroyer()
+        {
+            name = "Destroyer";
+            width = 2;
+            occupation = Occupation(name);
+        }
+    }
+
    
 }

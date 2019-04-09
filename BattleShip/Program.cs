@@ -11,7 +11,8 @@ namespace BattleShip
     {
         static void Main(string[] args)
         {
-            
+            GameBoard game = new GameBoard();
+            Console.WriteLine(game);
         }
     }
 }
