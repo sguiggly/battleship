@@ -25,9 +25,50 @@ namespace BattleShip
             ships = new List<Ship>()
             {
                 new Destroyer()
-                
+
             };
             gameBoard = new GameBoard();
+        }
+
+
+        public void placeShips()
+        {
+            Random rand = new Random(Guid.NewGuid.GetHashCode());
+            foreach (var ship in ships)
+            {
+                bool isOpen = true;
+                while (isOpen)
+                {
+                    var startC = rand.Next(1, 11);
+                    var startR = rand.Next(1, 11);
+                    int endR = startr, endC = startC;
+                    var orientation = rand.Next(1, 101) % 2;
+
+                    List<int> panelNum = new List<int>();
+                    if (orientation == 0)
+                    {
+                        for (int i = 1; i < ship.width; i++)
+                        {
+                            endR++;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 1; i < ship.width; i++)
+                        {
+                            endC++;
+                        }
+                    }
+
+                    if(endR>10||endC>10)
+                    {
+                        isOpen = true;
+                        continue;
+                    }
+
+                    var affectedPan = GameBoard.Panels.AddRange(startR, startC, endR, endC);
+                }
+            }
         }
     }
 }
